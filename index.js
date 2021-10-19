@@ -10,13 +10,16 @@ const main = async () => {
   await page.goto(PAGE_URL);
 
   const items = await page.evaluate(() => {
-    // write your querySelectors here
+    let description = document.querySelector('#description').innerHTML;
+    let title = document.querySelector('#detail-description-container > h2').innerHTML;
+    let price = document.querySelector('#detail-title > div.price').innerHTML.split(';')[1];
+    let address = document.querySelector('#detail-title > div.address').innerHTML;
 
     return {
-      description: "",
-      title: "",
-      price: "",
-      address: "",
+      description,
+      title,
+      price,
+      address,
     };
   });
 
